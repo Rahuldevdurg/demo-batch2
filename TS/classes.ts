@@ -8,41 +8,41 @@ console.log('Classes !!');
 //   age: 29,
 // };
 
-class Department {
-  //Properties and Behaviours
-  private employess: string[] = [];
-  //   public departmentName : string;
-  //   public address : string;
+// class Department {
+//   //Properties and Behaviours
+//   private employess: string[] = [];
+//   //   public departmentName : string;
+//   //   public address : string;
 
-  constructor(
-    private id: number,
-    private departmentName: string,
-    public address: string = 'Kolkata'
-  ) {}
+//   constructor(
+//     private id: number,
+//     private departmentName: string,
+//     public address: string = 'Kolkata'
+//   ) {}
 
-  describe() {
-    console.log(
-      `The department : ${this.departmentName}, Address : ${this.address}`
-    );
-  }
+//   describe() {
+//     console.log(
+//       `The department : ${this.departmentName}, Address : ${this.address}`
+//     );
+//   }
 
-  addEmployee(name: string) {
-    //Conditions.
-    this.employess.push(name);
-    this.printEmployees();
-  }
+//   addEmployee(name: string) {
+//     //Conditions.
+//     this.employess.push(name);
+//     this.printEmployees();
+//   }
 
-  printEmployees() {
-    console.log(this.employess);
-  }
-}
+//   printEmployees() {
+//     console.log(this.employess);
+//   }
+// }
 
-let dep = new Department(1, 'IT Department');
-dep.addEmployee('Swagat');
-dep.describe();
-dep.printEmployees();
+// let dep = new Department(1, 'IT Department');
+// dep.addEmployee('Swagat');
+// dep.describe();
+// dep.printEmployees();
 
-let dep2 = new Department(2, 'Accounts Department', 'Delhi');
-dep2.describe();
+// let dep2 = new Department(2, 'Accounts Department', 'Delhi');
+// dep2.describe();
 
-console.log(dep);
+// console.log(dep);
