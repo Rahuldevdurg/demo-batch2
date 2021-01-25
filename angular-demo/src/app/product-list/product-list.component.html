@@ -1,12 +1,23 @@
 <h1>{{title}}</h1>
 <hr>
-<div class="card" style="width: 18rem;">
-  <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{product.productName}}</h5>
-    <p class="card-text">{{product.description}}</p>
-    <p class="card-text">Released On : {{product.releaseDate}}</p>
-    <p class="card-text">Price : {{product.price}}</p>
-    <a href="#" class="btn btn-primary">Buy</a>
+<div class="row" *ngIf="products?.length; else noProducts">
+  <div class="col-md-6" *ngFor="let product of products">
+    <div class="card">
+      <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{product.productName}}</h5>
+        <p class="card-text">{{product.description}}</p>
+        <p class="card-text">Released On : {{product.releaseDate}}</p>
+        <p class="card-text">Price : {{product.price}}</p>
+        <a href="#" class="btn btn-primary" *ngIf="product.isActive; else discontinuedProduct">Buy</a>
+        <ng-template #discontinuedProduct>
+          <p class="text-danger">This is discontinued</p>
+        </ng-template>
+      </div>
+    </div>
   </div>
 </div>
+
+<ng-template #noProducts>
+  <p class="text-danger">No Products available</p>
+</ng-template>

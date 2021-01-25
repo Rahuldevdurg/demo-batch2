@@ -9,14 +9,8 @@ import { IProduct } from '../models/product.interface';
 export class ProductListComponent implements OnInit {
   constructor() {}
   title: string = 'Product List';
-  product: IProduct = {
-    productName: 'Hero Honda Splendor',
-    description: 'Most popular Indian Bike',
-    releaseDate: '10-12-1990',
-    price: 200,
-    isActive: true,
-    imageUrl: 'https://via.placeholder.com/250?text=splendor',
-  };
+
+  products: IProduct[] = null;
 
   ngOnInit(): void {}
 }
