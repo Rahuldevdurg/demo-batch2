@@ -10,7 +10,12 @@
         <h5 class="card-title">{{i+1}}. {{product.productName}}</h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Released On : {{product.releaseDate}}</p>
-        <p class="card-text">Price : {{product.price}}</p>
+        <p class="card-text" [ngSwitch]='true'>Price : {{product.price}}
+          <span *ngSwitchCase='product.price >=200'>(Costly)</span>
+          <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
+          <span *ngSwitchDefault>(Value4Money)</span>
+        </p>
+
         <a href="#" class="btn btn-primary" *ngIf="product.isActive; else discontinuedProduct">Buy</a>
         <ng-template #discontinuedProduct>
           <p class="text-danger">This is discontinued</p>
