@@ -1,33 +1,24 @@
 <h1>{{title}}</h1>
 <hr>
-<button (click)='refreshData()'>Refresh Data</button>
+<button class="btn btn-primary mr-3" (click)='refreshData()'>Refresh Data</button>
+<button class="btn btn-secondary" (click)="toggleImage()">{{showImages ? 'Hide':'Show'}} Images</button>
 <div class="row" *ngIf="products?.length; else noProducts">
 
   <div class="col-md-3" *ngFor="let product of products;let i= index;trackBy:trackByName">
     <div class="card">
-      <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap" [title]="product.productName">
+      <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
+        [title]="product.productName">
       <div class="card-body">
         <h5 class="card-title">{{i+1}}. {{product.productName}}</h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Released On : {{product.releaseDate}}</p>
-        <p class="card-text" [ngSwitch]='true' [ngClass]="getClassesForProduct(product)">
+        <p class="card-text" [ngSwitch]=' true' [ngClass]="getClassesForProduct(product)">
           Price : {{product.price}}
           <span *ngSwitchCase='product.price >=200'>(Costly)</span>
           <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
           <span *ngSwitchDefault>(Value4Money)</span>
         </p>
-        <button class="btn btn-primary" [disabled]='!product.isActive'>Buy</button>
-
-
-
-        <p *ngIf='product.isActive'>You can buy this product</p>
-        <p *ngIf='!product.isActive'>You can not buy this product</p>
-
-
-        <p [hidden]='!product.isActive'>You can buy this product (HIDDEN)</p>
-        <p [hidden]='product.isActive'>You can not buy this product (HIDDEN)</p>
-
-
+        <button class="btn btn-primary" [disabled]='!product.isActive' (click)="buyProduct(product)">Buy</button>
       </div>
     </div>
   </div>

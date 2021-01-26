@@ -9,6 +9,8 @@ import { IProduct } from '../models/product.interface';
 export class ProductListComponent implements OnInit {
   title: string = 'Product List';
   products: IProduct[];
+  showImages: boolean = false;
+
   constructor() {
     this.products = [
       {
@@ -124,5 +126,13 @@ export class ProductListComponent implements OnInit {
     } else {
       return {};
     }
+  }
+
+  buyProduct(product: IProduct) {
+    console.log('Buying initiated for ' + product.productName);
+  }
+
+  toggleImage() {
+    this.showImages = !this.showImages;
   }
 }
