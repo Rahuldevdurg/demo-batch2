@@ -98,4 +98,20 @@ export class ProductListComponent implements OnInit {
   trackByName(index: number, product: IProduct) {
     return product.productName;
   }
+
+  getProductStyles(product: IProduct) {
+    if (product.price == 200) {
+      return {
+        color: 'green',
+        fontWeight: 'bolder',
+      };
+    } else {
+      return {};
+    }
+
+    // return {
+    //   color: product.price == 200 ? 'green' : '',
+    //   fontWeight: product.price == 200 ? 'bolder' : 'normal',
+    // };
+  }
 }

@@ -3,14 +3,14 @@
 <button (click)='refreshData()'>Refresh Data</button>
 <div class="row" *ngIf="products?.length; else noProducts">
 
-  <div class="col-md-6" *ngFor="let product of products;let i= index;trackBy:trackByName">
+  <div class="col-md-3" *ngFor="let product of products;let i= index;trackBy:trackByName">
     <div class="card">
       <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap" [title]="product.productName">
       <div class="card-body">
         <h5 class="card-title">{{i+1}}. {{product.productName}}</h5>
         <p class="card-text">{{product.description}}</p>
         <p class="card-text">Released On : {{product.releaseDate}}</p>
-        <p class="card-text" [ngSwitch]='true'>Price : {{product.price}}
+        <p class="card-text" [ngSwitch]='true' [ngStyle]="getProductStyles(product)">Price : {{product.price}}
           <span *ngSwitchCase='product.price >=200'>(Costly)</span>
           <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
           <span *ngSwitchDefault>(Value4Money)</span>
