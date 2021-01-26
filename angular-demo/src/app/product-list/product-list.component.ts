@@ -114,4 +114,15 @@ export class ProductListComponent implements OnInit {
     //   fontWeight: product.price == 200 ? 'bolder' : 'normal',
     // };
   }
+
+  getClassesForProduct(product: IProduct) {
+    if (product.price == 200) {
+      return {
+        green: true,
+        bold: true,
+      };
+    } else {
+      return {};
+    }
+  }
 }
