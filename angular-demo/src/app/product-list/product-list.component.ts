@@ -9,7 +9,9 @@ import { IProduct } from '../models/product.interface';
 export class ProductListComponent implements OnInit {
   title: string = 'Product List';
   products: IProduct[];
+  allProducts: IProduct[];
   showImages: boolean = false;
+  searchText: string = '';
 
   constructor() {
     this.products = [
@@ -47,6 +49,7 @@ export class ProductListComponent implements OnInit {
         imageUrl: 'https://via.placeholder.com/150?text=RX100',
       },
     ];
+    this.allProducts = [...this.products];
   }
 
   refreshData() {
@@ -130,9 +133,17 @@ export class ProductListComponent implements OnInit {
 
   buyProduct(product: IProduct) {
     console.log('Buying initiated for ' + product.productName);
+    console.log('Value of Search Text', this.searchText);
   }
 
   toggleImage() {
     this.showImages = !this.showImages;
+  }
+
+  filterData() {
+    console.log('Filtering !', this.searchText);
+    this.products = this.allProducts.filter((item) =>
+      item.productName.toLowerCase().includes(this.searchText.toLowerCase())
+    );
   }
 }

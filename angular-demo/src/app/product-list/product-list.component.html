@@ -1,8 +1,10 @@
 <h1>{{title}}</h1>
 <hr>
-<button class="btn btn-primary mr-3" (click)='refreshData()'>Refresh Data</button>
-<button class="btn btn-secondary" (click)="toggleImage()">{{showImages ? 'Hide':'Show'}} Images</button>
-<div class="row" *ngIf="products?.length; else noProducts">
+<input type="text" class="form-control" placeholder="Search products" [(ngModel)]="searchText" (keyup)="filterData()">
+Search By : {{searchText}} <br>
+<button class="btn btn-primary mr-3 mt-3" (click)='refreshData()'>Refresh Data</button>
+<button class="btn btn-secondary mt-3" (click)="toggleImage()">{{showImages ? 'Hide':'Show'}} Images</button>
+<div class="row mt-3" *ngIf="products?.length; else noProducts">
 
   <div class="col-md-3" *ngFor="let product of products;let i= index;trackBy:trackByName">
     <div class="card">
