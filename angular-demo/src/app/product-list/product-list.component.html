@@ -5,7 +5,7 @@
 
   <div class="col-md-6" *ngFor="let product of products;let i= index;trackBy:trackByName">
     <div class="card">
-      <img class="card-img-top" src="{{product.imageUrl}}" alt="Card image cap">
+      <img class="card-img-top" [src]="product.imageUrl" alt="Card image cap" [title]="product.productName">
       <div class="card-body">
         <h5 class="card-title">{{i+1}}. {{product.productName}}</h5>
         <p class="card-text">{{product.description}}</p>
@@ -15,11 +15,18 @@
           <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
           <span *ngSwitchDefault>(Value4Money)</span>
         </p>
+        <button class="btn btn-primary" [disabled]='!product.isActive'>Buy</button>
 
-        <a href="#" class="btn btn-primary" *ngIf="product.isActive; else discontinuedProduct">Buy</a>
-        <ng-template #discontinuedProduct>
-          <p class="text-danger">This is discontinued</p>
-        </ng-template>
+
+
+        <p *ngIf='product.isActive'>You can buy this product</p>
+        <p *ngIf='!product.isActive'>You can not buy this product</p>
+
+
+        <p [hidden]='!product.isActive'>You can buy this product (HIDDEN)</p>
+        <p [hidden]='product.isActive'>You can not buy this product (HIDDEN)</p>
+
+
       </div>
     </div>
   </div>
