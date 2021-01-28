@@ -13,7 +13,7 @@ Search By : {{searchText}} <br>
       <div class="card-body">
         <h5 class="card-title">{{i+1}}. {{product.productName | uppercase}}</h5>
         <p class="card-text">{{product.description | ifNullOrEmpty : '-' }}</p>
-        <p class="card-text">Released On : {{product.releaseDate | date : 'MMMM-dd-yyyy' | ifNullOrEmpty : 'N/A' }}</p>
+        <p class="card-text">Released On : {{product.releaseDate | customDate | ifNullOrEmpty : 'N/A' }}</p>
         <p class="card-text" [ngSwitch]=' true' [ngClass]="getClassesForProduct(product)">
           Price : {{product.price | currency : 'INR' :'Rs ' : '2.2-3'}}
           <span *ngSwitchCase='product.price >=200'>(Costly)</span>

@@ -7,6 +7,7 @@ import { TestComponentComponent } from './test-component/test-component.componen
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { IfNullOrEmptyPipe } from './pipes/if-null-or-empty.pipe';
+import { CustomDatePipe } from './pipes/custom-date.pipe';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { IfNullOrEmptyPipe } from './pipes/if-null-or-empty.pipe';
     TestComponentComponent,
     ProductListComponent,
     IfNullOrEmptyPipe,
+    CustomDatePipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
