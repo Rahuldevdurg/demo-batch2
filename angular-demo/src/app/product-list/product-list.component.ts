@@ -1,3 +1,4 @@
+import { LowerCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.interface';
 
@@ -13,7 +14,7 @@ export class ProductListComponent implements OnInit {
   showImages: boolean = false;
   searchText: string = '';
 
-  constructor() {
+  constructor(private lowerCasePipe: LowerCasePipe) {
     this.products = [
       {
         productName: 'Hero Honda CD 100',
@@ -143,7 +144,9 @@ export class ProductListComponent implements OnInit {
   filterData() {
     console.log('Filtering !', this.searchText);
     this.products = this.allProducts.filter((item) =>
-      item.productName.toLowerCase().includes(this.searchText.toLowerCase())
+      item.productName
+        .toLowerCase()
+        .includes(this.lowerCasePipe.transform(this.searchText))
     );
   }
 }
