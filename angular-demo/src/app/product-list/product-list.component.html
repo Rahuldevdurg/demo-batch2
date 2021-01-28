@@ -11,11 +11,11 @@ Search By : {{searchText}} <br>
       <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
         [title]="product.productName">
       <div class="card-body">
-        <h5 class="card-title">{{i+1}}. {{product.productName}}</h5>
-        <p class="card-text">{{product.description}}</p>
-        <p class="card-text">Released On : {{product.releaseDate}}</p>
+        <h5 class="card-title">{{i+1}}. {{product.productName | uppercase}}</h5>
+        <p class="card-text">{{product.description | ifNullOrEmpty : '-' }}</p>
+        <p class="card-text">Released On : {{product.releaseDate | date : 'MMMM-dd-yyyy' | ifNullOrEmpty : 'N/A' }}</p>
         <p class="card-text" [ngSwitch]=' true' [ngClass]="getClassesForProduct(product)">
-          Price : {{product.price}}
+          Price : {{product.price | currency : 'INR' :'Rs ' : '2.2-3'}}
           <span *ngSwitchCase='product.price >=200'>(Costly)</span>
           <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
           <span *ngSwitchDefault>(Value4Money)</span>

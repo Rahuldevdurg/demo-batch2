@@ -6,6 +6,7 @@ import { HelloComponent } from './hello.component';
 import { TestComponentComponent } from './test-component/test-component.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
+import { IfNullOrEmptyPipe } from './pipes/if-null-or-empty.pipe';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FormsModule } from '@angular/forms';
     HelloComponent,
     TestComponentComponent,
     ProductListComponent,
+    IfNullOrEmptyPipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [],
