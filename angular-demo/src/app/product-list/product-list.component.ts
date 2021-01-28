@@ -140,13 +140,15 @@ export class ProductListComponent implements OnInit {
   toggleImage() {
     this.showImages = !this.showImages;
   }
-
-  filterData() {
-    console.log('Filtering !', this.searchText);
-    this.products = this.allProducts.filter((item) =>
-      item.productName
-        .toLowerCase()
-        .includes(this.lowerCasePipe.transform(this.searchText))
-    );
+  changeName() {
+    this.products[0].productName = 'Nexon';
   }
+  // filterData() {
+  //   console.log('Filtering !', this.searchText);
+  //   this.products = this.allProducts.filter((item) =>
+  //     item.productName
+  //       .toLowerCase()
+  //       .includes(this.lowerCasePipe.transform(this.searchText))
+  //   );
+  // }
 }

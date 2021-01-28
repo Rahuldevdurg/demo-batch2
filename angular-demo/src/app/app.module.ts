@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { IfNullOrEmptyPipe } from './pipes/if-null-or-empty.pipe';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { LowerCasePipe } from '@angular/common';
+import { SearchProductPipe } from './pipes/search-product.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { LowerCasePipe } from '@angular/common';
     ProductListComponent,
     IfNullOrEmptyPipe,
     CustomDatePipe,
+    SearchProductPipe,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
