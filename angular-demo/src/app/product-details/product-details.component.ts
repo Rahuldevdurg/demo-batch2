@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  DoCheck,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { IProduct } from '../models/product.interface';
 
 @Component({
@@ -6,7 +13,7 @@ import { IProduct } from '../models/product.interface';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnChanges, DoCheck {
   @Input() product: IProduct;
   @Input() isShowImage: boolean;
 
@@ -14,8 +21,22 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor() {}
 
+  ngDoCheck(): void {
+    this.counter++;
+    console.log('Inside ngDoCheck() ProductDetailsComponent', this.counter);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.counter++;
+    console.log('Inside OnChanges() ProductDetailsComponent', {
+      changes: changes,
+      counter: this.counter,
+    });
+  }
+
   ngOnInit(): void {
     this.counter++;
+    console.log('Inside ngOnInit() ProductDetailsComponent', this.counter);
   }
 
   getClassesForProduct(product: IProduct) {

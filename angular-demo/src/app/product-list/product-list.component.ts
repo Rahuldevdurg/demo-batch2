@@ -25,31 +25,31 @@ export class ProductListComponent implements OnInit {
         isActive: true,
         imageUrl: 'https://via.placeholder.com/150?text=CD100SS',
       },
-      {
-        productName: 'Honda Hornet',
-        description: 'A sports Bike',
-        releaseDate: '10-08-2010',
-        price: 200,
-        isActive: true,
-        imageUrl: 'https://via.placeholder.com/150?text=Hornet',
-      },
-      {
-        productName: 'Super splendor',
-        description: '',
-        releaseDate: null,
-        price: 0.78,
-        isActive: true,
+      // {
+      //   productName: 'Honda Hornet',
+      //   description: 'A sports Bike',
+      //   releaseDate: '10-08-2010',
+      //   price: 200,
+      //   isActive: true,
+      //   imageUrl: 'https://via.placeholder.com/150?text=Hornet',
+      // },
+      // {
+      //   productName: 'Super splendor',
+      //   description: '',
+      //   releaseDate: null,
+      //   price: 0.78,
+      //   isActive: true,
 
-        imageUrl: 'https://via.placeholder.com/150?text=Splendor',
-      },
-      {
-        productName: 'Yamaha RX 100',
-        description: null,
-        releaseDate: '10-08-1987',
-        price: 122,
-        isActive: false,
-        imageUrl: 'https://via.placeholder.com/150?text=RX100',
-      },
+      //   imageUrl: 'https://via.placeholder.com/150?text=Splendor',
+      // },
+      // {
+      //   productName: 'Yamaha RX 100',
+      //   description: null,
+      //   releaseDate: '10-08-1987',
+      //   price: 122,
+      //   isActive: false,
+      //   imageUrl: 'https://via.placeholder.com/150?text=RX100',
+      // },
     ];
     this.allProducts = [...this.products];
   }
