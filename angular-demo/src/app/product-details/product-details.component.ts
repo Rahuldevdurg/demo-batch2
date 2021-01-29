@@ -1,11 +1,14 @@
 import {
   Component,
   DoCheck,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
 } from '@angular/core';
+
 import { IProduct } from '../models/product.interface';
 
 @Component({
@@ -17,26 +20,28 @@ export class ProductDetailsComponent implements OnInit, OnChanges, DoCheck {
   @Input() product: IProduct;
   @Input() isShowImage: boolean;
 
+  @Output() onProductDelete: EventEmitter<string> = new EventEmitter<string>();
+
   counter: number = 0;
 
   constructor() {}
 
   ngDoCheck(): void {
     this.counter++;
-    console.log('Inside ngDoCheck() ProductDetailsComponent', this.counter);
+    // console.log('Inside ngDoCheck() ProductDetailsComponent', this.counter);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.counter++;
-    console.log('Inside OnChanges() ProductDetailsComponent', {
-      changes: changes,
-      counter: this.counter,
-    });
+    // console.log('Inside OnChanges() ProductDetailsComponent', {
+    //   changes: changes,
+    //   counter: this.counter,
+    // });
   }
 
   ngOnInit(): void {
     this.counter++;
-    console.log('Inside ngOnInit() ProductDetailsComponent', this.counter);
+    // console.log('Inside ngOnInit() ProductDetailsComponent', this.counter);
   }
 
   getClassesForProduct(product: IProduct) {
@@ -52,5 +57,11 @@ export class ProductDetailsComponent implements OnInit, OnChanges, DoCheck {
 
   buyProduct(product: IProduct) {
     console.log('Buying initiated for ' + product.productName);
+  }
+
+  deleteProduct(product: IProduct) {
+    //you make http call
+    console.log('Deleting Product -' + product.productName);
+    this.onProductDelete.emit(product.productName);
   }
 }
