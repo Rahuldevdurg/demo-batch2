@@ -6,27 +6,18 @@ Search By : {{searchText}} <br>
 <button class="btn btn-secondary mt-3 mr-3" (click)="toggleImage()">{{showImages ? 'Hide':'Show'}} Images</button>
 <button class="btn btn-secondary mt-3" (click)="changeName()">Change Name</button>
 <div class="row mt-3" *ngIf="products?.length; else noProducts">
-
   <div class="col-md-3" *ngFor="let product of products | searchProduct : searchText;let i= index;trackBy:trackByName">
-    <div class="card">
-      <img class="card-img-top" *ngIf="showImages" [src]="product.imageUrl" alt="Card image cap"
-        [title]="product.productName">
-      <div class="card-body">
-        <h5 class="card-title">{{i+1}}. {{product.productName | uppercase}}</h5>
-        <p class="card-text">{{product.description | ifNullOrEmpty : '-' }}</p>
-        <p class="card-text">Released On : {{product.releaseDate | customDate | ifNullOrEmpty : 'N/A' }}</p>
-        <p class="card-text" [ngSwitch]=' true' [ngClass]="getClassesForProduct(product)">
-          Price : {{product.price | currency : 'INR' :'Rs ' : '2.2-3'}}
-          <span *ngSwitchCase='product.price >=200'>(Costly)</span>
-          <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
-          <span *ngSwitchDefault>(Value4Money)</span>
-        </p>
-        <button class="btn btn-primary" [disabled]='!product.isActive' (click)="buyProduct(product)">Buy</button>
-      </div>
-    </div>
+    <app-product-details [product]="product" [isShowImage]="showImages"></app-product-details>
   </div>
 </div>
 {{products|json}}
 <ng-template #noProducts>
   <p class="text-danger">No Products available</p>
 </ng-template>
+
+<hr>
+
+<button type="button" class="btn btn-success" (click)="renderTestComponnet=!renderTestComponnet">Toggle Test
+  Component</button>
+
+<app-test-component *ngIf="renderTestComponnet"></app-test-component>

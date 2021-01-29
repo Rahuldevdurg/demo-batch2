@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
   allProducts: IProduct[];
   showImages: boolean = false;
   searchText: string = '';
+  renderTestComponnet: boolean = true;
 
   constructor(private lowerCasePipe: LowerCasePipe) {
     this.products = [
@@ -103,38 +104,6 @@ export class ProductListComponent implements OnInit {
 
   trackByName(index: number, product: IProduct) {
     return product.productName;
-  }
-
-  getProductStyles(product: IProduct) {
-    if (product.price == 200) {
-      return {
-        color: 'green',
-        fontWeight: 'bolder',
-      };
-    } else {
-      return {};
-    }
-
-    // return {
-    //   color: product.price == 200 ? 'green' : '',
-    //   fontWeight: product.price == 200 ? 'bolder' : 'normal',
-    // };
-  }
-
-  getClassesForProduct(product: IProduct) {
-    if (product.price == 200) {
-      return {
-        green: true,
-        bold: true,
-      };
-    } else {
-      return {};
-    }
-  }
-
-  buyProduct(product: IProduct) {
-    console.log('Buying initiated for ' + product.productName);
-    console.log('Value of Search Text', this.searchText);
   }
 
   toggleImage() {

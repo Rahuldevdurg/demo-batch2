@@ -9,7 +9,6 @@ export class SearchProductPipe implements PipeTransform {
 
   transform(products: IProduct[], searchText: string) {
     this.counter++;
-    console.log(this.counter + ' - Product Search Pipe Called');
     if (searchText) {
       return products.filter((item) =>
         item.productName.toLowerCase().includes(searchText.toLowerCase())
