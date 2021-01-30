@@ -11,6 +11,7 @@ import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { LowerCasePipe } from '@angular/common';
 import { SearchProductPipe } from './pipes/search-product.pipe';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ParentComponent } from './parent-component/parent.component';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     CustomDatePipe,
     SearchProductPipe,
     ProductDetailsComponent,
+    ParentComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
-  bootstrap: [ProductListComponent],
+  bootstrap: [ParentComponent],
 })
 export class AppModule {}
