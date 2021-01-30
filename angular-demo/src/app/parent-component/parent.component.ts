@@ -4,38 +4,47 @@ import {
   Component,
   ElementRef,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
+import { ChildComponent } from '../child/child.component';
 
 @Component({
   selector: 'app-parent-component',
-  template: `
-    <h2 #header>Inside Parent Component</h2>
-    <input type="text" placeholder="Message" #message />
-    <button type="button" (click)="logMessage()">Log Message</button>
-  `,
+  template: ` <h2 #header>Inside Parent Component</h2>
+    <hr />
+    <app-child></app-child>
+    <hr />
+    <app-child></app-child>
+    <hr />
+    <app-child></app-child>
+    <hr />
+    <app-child></app-child>
+    <button (click)="logOnParent()">Call Child Log</button>
+    <button (click)="udpateTime()">Update Time</button>`,
 })
-export class ParentComponent
-  implements OnInit, AfterViewInit, AfterViewChecked {
-  @ViewChild('message') messageInput: ElementRef;
-  @ViewChild('header') headerTag: ElementRef;
+export class ParentComponent implements AfterViewInit {
+  constructor() {}
+  @ViewChildren(ChildComponent) children: QueryList<ChildComponent>;
 
-  constructor() {
-    console.log('Inside constructor - ', this.messageInput);
-  }
   ngAfterViewInit(): void {
-    console.log('Inside ngAfterViewInit - ', this.messageInput);
+    console.log(this.children.toArray());
+
+    window.setInterval(() => {
+      this.children.toArray().forEach((child) => {
+        child.currentTime = new Date();
+      });
+    }, 1000);
+  }
+  logOnParent() {
+    console.log('Logging from parent');
+    //call the child log method
+    //this.children.logFromChild();
   }
 
-  ngAfterViewChecked(): void {
-    console.log('Inside ngAfterViewChecked - ', this.messageInput);
-  }
-  ngOnInit(): void {
-    console.log('Inside ngOnInit - ', this.messageInput);
-  }
-
-  logMessage() {
-    console.log(this.messageInput.nativeElement.value);
-    console.log(this.headerTag.nativeElement.innerHTML);
+  udpateTime() {
+    console.log('Updating Time...');
+    //this.children.currentTime = new Date();
   }
 }
