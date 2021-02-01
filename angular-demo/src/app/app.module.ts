@@ -14,6 +14,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
 import { ParentComponent } from './parent-component/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AccordianComponent } from './shared/accordian/accordian.component';
+import { TimerComponent } from './timer/timer.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { AccordianComponent } from './shared/accordian/accordian.component';
     ParentComponent,
     ChildComponent,
     AccordianComponent,
+    TimerComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
