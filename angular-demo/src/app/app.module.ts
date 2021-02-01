@@ -13,6 +13,7 @@ import { SearchProductPipe } from './pipes/search-product.pipe';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ParentComponent } from './parent-component/parent.component';
 import { ChildComponent } from './child/child.component';
+import { AccordianComponent } from './shared/accordian/accordian.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ChildComponent } from './child/child.component';
     ProductDetailsComponent,
     ParentComponent,
     ChildComponent,
+    AccordianComponent,
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
