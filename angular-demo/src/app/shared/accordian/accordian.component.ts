@@ -22,17 +22,18 @@ export class AccordianComponent implements OnInit, AfterContentInit {
   isShown: boolean = false;
   // @ContentChild('goSomewhere') goSomewhereButton: ElementRef;
 
-  @ContentChild(TimerComponent) timerComps: TimerComponent;
+  @ContentChildren(TimerComponent, { descendants: true })
+  timerComps: QueryList<TimerComponent>;
 
   constructor() {}
   ngAfterContentInit(): void {
     console.log(
       'Inside ngAfterContentInit AccordianComponent ',
-      this.timerComps
+      this.timerComps.toArray()
     );
 
     window.setInterval(() => {
-      this.timerComps.currentTime = new Date();
+      this.timerComps.toArray().forEach((x) => (x.currentTime = new Date()));
     }, 1000);
   }
   // ngAfterContentChecked(): void {
