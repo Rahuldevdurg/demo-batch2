@@ -11,9 +11,10 @@ Search By : {{searchText}} <br>
       (onProductDelete)="removeProductFromArray($event)"></app-product-details>
   </div>
 </div>
-{{products|json}}
+
 <ng-template #noProducts>
   <p class="text-danger">No Products available</p>
 </ng-template>
 
 <hr>
+<app-test-component></app-test-component>

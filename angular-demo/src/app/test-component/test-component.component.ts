@@ -1,25 +1,23 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { IProduct } from '../models/product.interface';
+import { ProductService } from '../services/products.service';
 
 @Component({
   selector: 'app-test-component',
   templateUrl: './test-component.component.html',
   styleUrls: ['./test-component.component.css'],
 })
-export class TestComponentComponent implements OnInit, OnDestroy {
-  constructor() {}
-
-  counter: number = 0;
-
+export class TestComponentComponent implements OnInit {
+  productService: ProductService;
+  productList: IProduct[];
+  constructor() {
+    this.productService = ProductService.getServiceInstance();
+  }
   ngOnInit(): void {
-    this.counter++;
-    console.log('Inside ngOnInit() of TestComponentComponent - ', this.counter);
+    this.productList = this.productService.getProducts();
   }
 
-  ngOnDestroy(): void {
-    this.counter++;
-    console.log(
-      'Inside ngOnDestroy() of TestComponentComponent - ',
-      this.counter
-    );
+  refreshTestData() {
+    this.productList = this.productService.getProducts();
   }
 }

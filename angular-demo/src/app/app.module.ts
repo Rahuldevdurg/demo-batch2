@@ -33,6 +33,6 @@ import { TimerComponent } from './timer/timer.component';
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
-  bootstrap: [ParentComponent],
+  bootstrap: [ProductListComponent],
 })
 export class AppModule {}
