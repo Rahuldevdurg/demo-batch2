@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-child',

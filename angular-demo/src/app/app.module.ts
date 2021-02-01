@@ -29,6 +29,6 @@ import { ChildComponent } from './child/child.component';
   ],
   imports: [BrowserModule, FormsModule],
   providers: [LowerCasePipe],
-  bootstrap: [ParentComponent],
+  bootstrap: [ProductListComponent],
 })
 export class AppModule {}

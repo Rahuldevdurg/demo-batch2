@@ -1,11 +1,13 @@
 import { LowerCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.interface';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
+  providers: [ProductsService],
 })
 export class ProductListComponent implements OnInit {
   title: string = 'Product List';
@@ -15,44 +17,10 @@ export class ProductListComponent implements OnInit {
   searchText: string = '';
   renderTestComponnet: boolean = true;
 
-  constructor(private lowerCasePipe: LowerCasePipe) {
-    this.products = [
-      {
-        productName: 'Hero Honda CD 100',
-        description: 'Most popular Bike of India',
-        releaseDate: '10-08-1990',
-        price: 100.898,
-        isActive: true,
-        imageUrl: 'https://via.placeholder.com/150?text=CD100SS',
-      },
-      {
-        productName: 'Honda Hornet',
-        description: 'A sports Bike',
-        releaseDate: '10-08-2010',
-        price: 200,
-        isActive: true,
-        imageUrl: 'https://via.placeholder.com/150?text=Hornet',
-      },
-      {
-        productName: 'Super splendor',
-        description: '',
-        releaseDate: null,
-        price: 0.78,
-        isActive: true,
-
-        imageUrl: 'https://via.placeholder.com/150?text=Splendor',
-      },
-      {
-        productName: 'Yamaha RX 100',
-        description: null,
-        releaseDate: '10-08-1987',
-        price: 122,
-        isActive: false,
-        imageUrl: 'https://via.placeholder.com/150?text=RX100',
-      },
-    ];
-    this.allProducts = [...this.products];
-  }
+  constructor(
+    private lowerCasePipe: LowerCasePipe,
+    private productService: ProductsService
+  ) {}
 
   refreshData() {
     console.log('Refreshing !!');
@@ -100,7 +68,10 @@ export class ProductListComponent implements OnInit {
       },
     ];
   }
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.products = this.productService.getProducts();
+    this.allProducts = [...this.products];
+  }
 
   trackByName(index: number, product: IProduct) {
     return product.productName;

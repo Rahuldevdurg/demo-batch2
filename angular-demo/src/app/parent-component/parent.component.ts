@@ -9,42 +9,28 @@ import {
   ViewChildren,
 } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
+import { IProduct } from '../models/product.interface';
+import { ProductsService } from '../shared/products.service';
 
 @Component({
   selector: 'app-parent-component',
   template: ` <h2 #header>Inside Parent Component</h2>
     <hr />
-    <app-child></app-child>
-    <hr />
-    <app-child></app-child>
-    <hr />
-    <app-child></app-child>
-    <hr />
-    <app-child></app-child>
-    <button (click)="logOnParent()">Call Child Log</button>
-    <button (click)="udpateTime()">Update Time</button>`,
+    {{ allProducts | json }}`,
 })
-export class ParentComponent implements AfterViewInit {
-  constructor() {}
-  @ViewChildren(ChildComponent) children: QueryList<ChildComponent>;
+export class ParentComponent implements OnInit {
+  constructor(private productService: ProductsService) {}
+  allProducts: IProduct[];
 
-  ngAfterViewInit(): void {
-    console.log(this.children.toArray());
-
-    window.setInterval(() => {
-      this.children.toArray().forEach((child) => {
-        child.currentTime = new Date();
-      });
-    }, 1000);
+  ngOnInit() {
+    this.allProducts = this.productService.getProducts();
   }
+
   logOnParent() {
     console.log('Logging from parent');
-    //call the child log method
-    //this.children.logFromChild();
   }
 
   udpateTime() {
     console.log('Updating Time...');
-    //this.children.currentTime = new Date();
   }
 }
