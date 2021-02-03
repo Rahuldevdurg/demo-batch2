@@ -2,6 +2,7 @@ import { LowerCasePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.interface';
 import { ProductService } from '../services/products.service';
+import { UtilityService } from '../services/utility.service';
 
 @Component({
   selector: 'app-product-list',
@@ -18,7 +19,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private lowerCasePipe: LowerCasePipe,
-    private productService: ProductService
+    private productService: ProductService,
+    private utilityService: UtilityService
   ) {}
 
   refreshData() {
@@ -51,6 +53,8 @@ export class ProductListComponent implements OnInit {
   removeProductFromArray(productName: string) {
     //Remove the product from array.
     this.productService.deleteProduct(productName);
+    //Show an alert to the user.
+    this.utilityService.showError(`${productName} is deleted.`);
     this.refreshData();
   }
 }
