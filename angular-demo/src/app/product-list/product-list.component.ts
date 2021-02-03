@@ -16,11 +16,10 @@ export class ProductListComponent implements OnInit {
   searchText: string = '';
   renderTestComponnet: boolean = true;
 
-  productService: ProductService;
-
-  constructor(private lowerCasePipe: LowerCasePipe) {
-    this.productService = ProductService.getServiceInstance();
-  }
+  constructor(
+    private lowerCasePipe: LowerCasePipe,
+    private productService: ProductService
+  ) {}
 
   refreshData() {
     console.log('Refreshing !!');

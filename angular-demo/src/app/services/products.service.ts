@@ -1,5 +1,7 @@
+import { Injectable } from '@angular/core';
 import { IProduct } from '../models/product.interface';
 
+@Injectable({ providedIn: 'root' })
 export class ProductService {
   private allProducts: IProduct[] = [
     {
@@ -36,9 +38,8 @@ export class ProductService {
       imageUrl: 'https://via.placeholder.com/150?text=RX100',
     },
   ];
-  private static _instance: ProductService;
 
-  private constructor() {}
+  constructor() {}
 
   getProducts(): IProduct[] {
     return this.allProducts;
@@ -47,14 +48,5 @@ export class ProductService {
     this.allProducts = this.allProducts.filter(
       (x) => x.productName != productName
     );
-  }
-
-  static getServiceInstance() {
-    if (this._instance) {
-      return this._instance;
-    } else {
-      this._instance = new ProductService();
-      return this._instance;
-    }
   }
 }
