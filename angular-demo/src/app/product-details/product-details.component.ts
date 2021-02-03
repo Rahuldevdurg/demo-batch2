@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 import { IProduct } from '../models/product.interface';
+import { ProductService } from '../services/products.service';
 
 @Component({
   selector: 'app-product-details',
@@ -21,10 +22,11 @@ export class ProductDetailsComponent implements OnInit, OnChanges, DoCheck {
   @Input() isShowImage: boolean;
 
   @Output() onProductDelete: EventEmitter<string> = new EventEmitter<string>();
+  @Output() onStatusChange: EventEmitter<number> = new EventEmitter<number>();
 
   counter: number = 0;
 
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
   ngDoCheck(): void {
     this.counter++;
@@ -63,5 +65,14 @@ export class ProductDetailsComponent implements OnInit, OnChanges, DoCheck {
     //you make http call
     console.log('Deleting Product -' + product.productName);
     this.onProductDelete.emit(product.productName);
+  }
+
+  changeStatus(newStatus: 'deactivate' | 'activate', product: IProduct) {
+    this.productService
+      .changeStatus(newStatus, product.productId)
+      .subscribe((data: IProduct) => {
+        console.log('Status Changed');
+        this.onStatusChange.emit(product.productId);
+      });
   }
 }

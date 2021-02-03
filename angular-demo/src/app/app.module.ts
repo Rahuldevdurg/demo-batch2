@@ -15,7 +15,7 @@ import { ParentComponent } from './parent-component/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AccordianComponent } from './shared/accordian/accordian.component';
 import { TimerComponent } from './timer/timer.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,7 @@ import { TimerComponent } from './timer/timer.component';
     AccordianComponent,
     TimerComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [LowerCasePipe],
   bootstrap: [ProductListComponent],
 })

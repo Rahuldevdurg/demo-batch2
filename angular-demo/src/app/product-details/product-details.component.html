@@ -11,7 +11,11 @@
       <span *ngSwitchCase='product.price <= 100'>(Cheap)</span>
       <span *ngSwitchDefault>(Value4Money)</span>
     </p>
-    <button class="btn btn-secondary mr-2" [disabled]='!product.isActive' (click)="buyProduct(product)">Buy</button>
+    <button class="btn btn-primary mr-2" [disabled]='!product.isActive' (click)="buyProduct(product)">Buy</button>
     <button class="btn btn-danger" [disabled]='!product.isActive' (click)="deleteProduct(product)">Delete</button>
+    <button class="btn btn-secondary" (click)="changeStatus('activate', product)"
+      *ngIf="!product.isActive">Activate</button>
+    <button class="btn btn-secondary" (click)="changeStatus('deactivate', product)"
+      *ngIf="product.isActive">DeActivate</button>
   </div>
 </div>

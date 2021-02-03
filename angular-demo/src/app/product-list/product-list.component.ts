@@ -25,12 +25,17 @@ export class ProductListComponent implements OnInit {
 
   refreshData() {
     console.log('Refreshing !!');
-    this.products = this.productService.getProducts();
   }
   ngOnInit(): void {
-    this.products = this.productService.getProducts();
+    this.loadInitialData();
   }
 
+  private loadInitialData() {
+    this.productService.getProducts().subscribe((data: IProduct[]) => {
+      console.log('Data from Subscription ', data);
+      this.products = data;
+    });
+  }
   trackByName(index: number, product: IProduct) {
     return product.productName;
   }
@@ -56,5 +61,9 @@ export class ProductListComponent implements OnInit {
     //Show an alert to the user.
     this.utilityService.showError(`${productName} is deleted.`);
     this.refreshData();
+  }
+  onStatusChangeOfProduct(productId: number) {
+    this.utilityService.showSuccess(`Product Status Changed !`);
+    this.loadInitialData();
   }
 }

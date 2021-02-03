@@ -12,10 +12,10 @@ export class TestComponentComponent implements OnInit {
   productList2: IProduct[];
   constructor(private productService: ProductService) {}
   ngOnInit(): void {
-    this.productList = this.productService.getProducts();
+    //this.productList = this.productService.getProducts();
   }
 
   refreshTestData() {
-    this.productList = this.productService.getProducts();
+    //is.productList = this.productService.getProducts();
   }
 }
