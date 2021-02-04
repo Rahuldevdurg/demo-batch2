@@ -7,7 +7,6 @@ import { ProductService } from '../services/products.service';
 import { UtilityService } from '../services/utility.service';
 
 @Component({
-  selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })

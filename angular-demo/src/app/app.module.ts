@@ -16,6 +16,40 @@ import { ChildComponent } from './child/child.component';
 import { AccordianComponent } from './shared/accordian/accordian.component';
 import { TimerComponent } from './timer/timer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { ProductProfileComponent } from './product-profile/product-profile.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'welcome',
+    component: WelcomeComponent,
+  },
+  {
+    path: 'products/new',
+    component: AddProductComponent,
+  },
+  {
+    path: 'products',
+    component: ProductListComponent,
+  },
+  {
+    path: 'products/:id',
+    component: ProductProfileComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'welcome',
+    pathMatch: 'full',
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
+  },
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +64,17 @@ import { HttpClientModule } from '@angular/common/http';
     ChildComponent,
     AccordianComponent,
     TimerComponent,
+    WelcomeComponent,
+    ProductProfileComponent,
+    AddProductComponent,
+    NotFoundComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+  ],
   providers: [LowerCasePipe],
   bootstrap: [AppComponent],
 })
