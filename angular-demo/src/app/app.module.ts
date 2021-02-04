@@ -33,6 +33,6 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [LowerCasePipe],
-  bootstrap: [ProductListComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
