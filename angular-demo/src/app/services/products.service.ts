@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IProduct } from '../models/product.interface';
 
 @Injectable({ providedIn: 'root' })
@@ -8,15 +9,15 @@ export class ProductService {
   constructor(private http: HttpClient) {}
 
   getProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(
-      'http://testapi.techriff.in/api/open/products'
-    );
+    return this.http
+      .get<IProduct[]>('http://testapi.techriff.in/api/open/product')
+      .pipe(catchError(this.handleError));
   }
 
   getProduct(productId: number): Observable<IProduct> {
-    return this.http.get<IProduct>(
-      `http://testapi.techriff.in/api/open/products/${productId}`
-    );
+    return this.http
+      .get<IProduct>(`http://testapi.techriff.in/api/open/product/${productId}`)
+      .pipe(catchError(this.handleError));
   }
 
   deleteProduct(productName: string) {
@@ -39,5 +40,10 @@ export class ProductService {
         `http://testapi.techriff.in/api/open/products/${productId}/deactivate`,
         null
       );
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log('Logging from Error', error.message);
+    return throwError('Sorry, An error occurred');
   }
 }
