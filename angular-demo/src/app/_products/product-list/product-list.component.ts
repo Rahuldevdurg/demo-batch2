@@ -2,9 +2,9 @@ import { LowerCasePipe } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
-import { IProduct } from '../models/product.interface';
-import { ProductService } from '../services/products.service';
-import { UtilityService } from '../services/utility.service';
+import { IProduct } from 'src/app/models/product.interface';
+import { ProductService } from 'src/app/_products/services/products.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   templateUrl: './product-list.component.html',

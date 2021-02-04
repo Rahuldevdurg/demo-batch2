@@ -8,9 +8,8 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-
-import { IProduct } from '../models/product.interface';
-import { ProductService } from '../services/products.service';
+import { IProduct } from 'src/app/models/product.interface';
+import { ProductService } from 'src/app/_products/services/products.service';
 
 @Component({
   selector: 'app-product-details',
