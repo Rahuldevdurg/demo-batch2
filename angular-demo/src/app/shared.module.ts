@@ -7,7 +7,13 @@ import { SearchProductPipe } from './pipes/search-product.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule],
-  exports: [IfNullOrEmptyPipe, CustomDatePipe, SearchProductPipe],
+  exports: [
+    IfNullOrEmptyPipe,
+    CustomDatePipe,
+    SearchProductPipe,
+    CommonModule,
+    FormsModule,
+  ],
   declarations: [IfNullOrEmptyPipe, CustomDatePipe, SearchProductPipe],
   providers: [],
 })
