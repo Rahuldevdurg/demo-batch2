@@ -17,41 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
-import { ProductProfileGuard } from './_products/services/product-profile.guard';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { ProductResolver } from './_products/services/product-profile.resolver';
-import { AddProductComponent } from './_products/add-product/add-product.component';
-import { ProductDetailsComponent } from './_products/product-details/product-details.component';
-import { ProductListComponent } from './_products/product-list/product-list.component';
-import { ProductOverviewComponent } from './_products/product-overview/product-overview.component';
-import { ProductProfileComponent } from './_products/product-profile/product-profile.component';
-import { ProductSpecificationComponent } from './_products/product-specification/product-specification.component';
+import { ProductModule } from './_products/product.module';
 
 const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomeComponent,
-  },
-  {
-    path: 'products/new',
-    component: AddProductComponent,
-  },
-  {
-    path: 'products',
-    component: ProductListComponent,
-  },
-  {
-    path: 'products/:id',
-    component: ProductProfileComponent,
-    canActivate: [ProductProfileGuard], //true | Observable<true> | Promise<true>
-    resolve: {
-      productData: ProductResolver,
-    },
-    children: [
-      { path: '', component: ProductOverviewComponent },
-      { path: 'overview', component: ProductOverviewComponent },
-      { path: 'spec', component: ProductSpecificationComponent },
-    ],
   },
   {
     path: '',
@@ -69,30 +41,21 @@ const routes: Routes = [
     AppComponent,
     HelloComponent,
     TestComponentComponent,
-    ProductListComponent,
-    IfNullOrEmptyPipe,
-    CustomDatePipe,
-    SearchProductPipe,
-    ProductDetailsComponent,
     ParentComponent,
     ChildComponent,
     AccordianComponent,
     TimerComponent,
     WelcomeComponent,
-    ProductProfileComponent,
-    AddProductComponent,
     NotFoundComponent,
-    ProductOverviewComponent,
-    ProductSpecificationComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot(routes),
+    ProductModule,
   ],
-  providers: [LowerCasePipe, ProductProfileGuard, ProductResolver],
+  providers: [LowerCasePipe],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
