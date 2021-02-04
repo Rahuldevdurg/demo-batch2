@@ -1,1 +1,8 @@
-<h3>Your Product Profile</h3>
+<h3>Product ID - {{currentProductId}}</h3>
+{{
+currentProduct | json
+}}
+
+<hr>
+<button type="button" class="btn btn-secondary mr-2" (click)="goBack()">Go Back</button>
+<button type="button" class="btn btn-info" (click)="goToCreateNew()">Create New</button>

@@ -2,7 +2,9 @@
   <img class="card-img-top" [src]="product.imageUrl" *ngIf="isShowImage" alt="Card image cap"
     [title]="product.productName">
   <div class="card-body">
-    <h5 class="card-title"> {{product.productName | uppercase}}</h5>
+    <h5 class="card-title"> <a [routerLink]="['/products',product.productId]">{{product.productName
+        | uppercase}}</a>
+    </h5>
     <p class="card-text">{{product.description | ifNullOrEmpty : '-' }}</p>
     <p class="card-text">Released On : {{product.releaseDate | customDate | ifNullOrEmpty : 'N/A' }}</p>
     <p class="card-text" [ngSwitch]=' true' [ngClass]="getClassesForProduct(product)">
@@ -12,7 +14,7 @@
       <span *ngSwitchDefault>(Value4Money)</span>
     </p>
     <button class="btn btn-primary mr-2" [disabled]='!product.isActive' (click)="buyProduct(product)">Buy</button>
-    <button class="btn btn-danger" [disabled]='!product.isActive' (click)="deleteProduct(product)">Delete</button>
+    <button class="btn btn-danger mr-2" [disabled]='!product.isActive' (click)="deleteProduct(product)">Delete</button>
     <button class="btn btn-secondary" (click)="changeStatus('activate', product)"
       *ngIf="!product.isActive">Activate</button>
     <button class="btn btn-secondary" (click)="changeStatus('deactivate', product)"

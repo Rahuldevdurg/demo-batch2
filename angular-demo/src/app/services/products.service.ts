@@ -12,6 +12,13 @@ export class ProductService {
       'http://testapi.techriff.in/api/open/products'
     );
   }
+
+  getProduct(productId: number): Observable<IProduct> {
+    return this.http.get<IProduct>(
+      `http://testapi.techriff.in/api/open/products/${productId}`
+    );
+  }
+
   deleteProduct(productName: string) {
     // this.allProducts = this.allProducts.filter(
     //   (x) => x.productName != productName
