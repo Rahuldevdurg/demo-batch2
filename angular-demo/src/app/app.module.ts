@@ -22,6 +22,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductProfileGuard } from './services/product-profile.guard';
+import { NgHttpLoaderModule } from 'ng-http-loader';
 
 const routes: Routes = [
   {
@@ -75,6 +76,7 @@ const routes: Routes = [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
   providers: [LowerCasePipe, ProductProfileGuard],

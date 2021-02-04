@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
+    <ng-http-loader></ng-http-loader>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand cursor-pointer">Wipro</a>
       <ul class="navbar-nav mr-auto">
