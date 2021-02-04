@@ -11,22 +11,19 @@ export class ProductProfileComponent implements OnInit {
   currentProductId: number;
   currentProduct: IProduct;
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private productService: ProductService,
-    private route: Router
-  ) {}
+  constructor(private activatedRoute: ActivatedRoute, private route: Router) {}
   ngOnInit(): void {
-    this.currentProductId = +this.activatedRoute.snapshot.paramMap.get('id');
+    console.log();
+    this.currentProduct = this.activatedRoute.snapshot.data['productData'];
     // this.activatedRoute.params.subscribe((param) => {
     //   console.log('Param', +param['id']);
     // });
 
-    this.productService
-      .getProduct(this.currentProductId)
-      .subscribe((data: IProduct) => {
-        this.currentProduct = data;
-      });
+    // this.productService
+    //   .getProduct(this.currentProductId)
+    //   .subscribe((data: IProduct) => {
+    //     this.currentProduct = data;
+    //   });
   }
 
   goBack() {

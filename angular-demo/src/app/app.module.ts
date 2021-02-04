@@ -23,6 +23,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductProfileGuard } from './services/product-profile.guard';
 import { NgHttpLoaderModule } from 'ng-http-loader';
+import { ProductResolver } from './services/product-profile.resolver';
 
 const routes: Routes = [
   {
@@ -41,6 +42,9 @@ const routes: Routes = [
     path: 'products/:id',
     component: ProductProfileComponent,
     canActivate: [ProductProfileGuard], //true | Observable<true> | Promise<true>
+    resolve: {
+      productData: ProductResolver,
+    },
   },
   {
     path: '',
@@ -79,7 +83,7 @@ const routes: Routes = [
     NgHttpLoaderModule.forRoot(),
     RouterModule.forRoot(routes),
   ],
-  providers: [LowerCasePipe, ProductProfileGuard],
+  providers: [LowerCasePipe, ProductProfileGuard, ProductResolver],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
