@@ -10,13 +10,15 @@ export class ProductService {
 
   getProducts(): Observable<IProduct[]> {
     return this.http
-      .get<IProduct[]>('http://testapi.techriff.in/api/open/product')
+      .get<IProduct[]>('http://testapi.techriff.in/api/open/products')
       .pipe(catchError(this.handleError));
   }
 
   getProduct(productId: number): Observable<IProduct> {
     return this.http
-      .get<IProduct>(`http://testapi.techriff.in/api/open/product/${productId}`)
+      .get<IProduct>(
+        `http://testapi.techriff.in/api/open/products/${productId}`
+      )
       .pipe(catchError(this.handleError));
   }
 
@@ -31,15 +33,19 @@ export class ProductService {
     productId: number
   ): Observable<IProduct> {
     if (newStatus == 'activate')
-      return this.http.post<IProduct>(
-        `http://testapi.techriff.in/api/open/products/${productId}/reactivate`,
-        null
-      );
+      return this.http
+        .post<IProduct>(
+          `http://testapi.techriff.in/api/open/products/${productId}/reactivate`,
+          null
+        )
+        .pipe(catchError(this.handleError));
     else
-      return this.http.post<IProduct>(
-        `http://testapi.techriff.in/api/open/products/${productId}/deactivate`,
-        null
-      );
+      return this.http
+        .post<IProduct>(
+          `http://testapi.techriff.in/api/open/products/${productId}/deactivate`,
+          null
+        )
+        .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
