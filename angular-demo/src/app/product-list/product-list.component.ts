@@ -1,5 +1,7 @@
 import { LowerCasePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { take, takeUntil } from 'rxjs/operators';
 import { IProduct } from '../models/product.interface';
 import { ProductService } from '../services/products.service';
 import { UtilityService } from '../services/utility.service';
@@ -9,13 +11,15 @@ import { UtilityService } from '../services/utility.service';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent implements OnInit {
+export class ProductListComponent implements OnInit, OnDestroy {
   title: string = 'Product List';
   products: IProduct[];
   allProducts: IProduct[];
   showImages: boolean = false;
   searchText: string = '';
   renderTestComponnet: boolean = true;
+
+  // private destroy$ = new Subject();
 
   constructor(
     private lowerCasePipe: LowerCasePipe,
@@ -31,10 +35,13 @@ export class ProductListComponent implements OnInit {
   }
 
   private loadInitialData() {
-    this.productService.getProducts().subscribe((data: IProduct[]) => {
-      console.log('Data from Subscription ', data);
-      this.products = data;
-    });
+    this.productService
+      .getProducts()
+      .pipe(take(1))
+      .subscribe((data: IProduct[]) => {
+        console.log('Data from Subscription ', data);
+        this.products = data;
+      });
   }
   trackByName(index: number, product: IProduct) {
     return product.productName;
@@ -65,5 +72,10 @@ export class ProductListComponent implements OnInit {
   onStatusChangeOfProduct(productId: number) {
     this.utilityService.showSuccess(`Product Status Changed !`);
     this.loadInitialData();
+  }
+
+  ngOnDestroy(): void {
+    // this.destroy$.next(); // triggers unsubscription
+    // this.destroy$.complete(); // destroys the observable.
   }
 }
