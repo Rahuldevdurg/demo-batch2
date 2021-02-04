@@ -21,6 +21,7 @@ import { ProductProfileComponent } from './product-profile/product-profile.compo
 import { AddProductComponent } from './add-product/add-product.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule, Routes } from '@angular/router';
+import { ProductProfileGuard } from './services/product-profile.guard';
 
 const routes: Routes = [
   {
@@ -38,6 +39,7 @@ const routes: Routes = [
   {
     path: 'products/:id',
     component: ProductProfileComponent,
+    canActivate: [ProductProfileGuard], //true | Observable<true> | Promise<true>
   },
   {
     path: '',
@@ -75,7 +77,7 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
   ],
-  providers: [LowerCasePipe],
+  providers: [LowerCasePipe, ProductProfileGuard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
