@@ -8,6 +8,16 @@ const routes: Routes = [
     path: 'welcome',
     component: WelcomeComponent,
   },
+  // {
+  //   path: 'products',
+  //   loadChildren: './_products/products.module#ProductsModule',
+  // },
+
+  {
+    path: 'products',
+    loadChildren: () =>
+      import('./_products/products.module').then((x) => x.ProductsModule),
+  },
   {
     path: '',
     redirectTo: 'welcome',

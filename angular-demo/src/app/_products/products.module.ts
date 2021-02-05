@@ -19,15 +19,15 @@ import { ProductService } from './services/products.service';
     FormsModule,
     RouterModule.forChild([
       {
-        path: 'products/new',
+        path: 'new',
         component: AddProductComponent,
       },
       {
-        path: 'products',
+        path: '',
         component: ProductListComponent,
       },
       {
-        path: 'products/:id',
+        path: ':id',
         component: ProductProfileComponent,
         canActivate: [ProductProfileGuard], //true | Observable<true> | Promise<true>
         resolve: {
