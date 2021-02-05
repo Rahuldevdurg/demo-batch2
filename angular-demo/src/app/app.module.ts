@@ -24,6 +24,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ProductProfileGuard } from './services/product-profile.guard';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { ProductResolver } from './services/product-profile.resolver';
+import { ProductOverviewComponent } from './product-overview/product-overview.component';
+import { ProductSpecComponent } from './product-spec/product-spec.component';
 
 const routes: Routes = [
   {
@@ -45,6 +47,11 @@ const routes: Routes = [
     resolve: {
       productData: ProductResolver,
     },
+    children: [
+      { path: '', component: ProductOverviewComponent },
+      { path: 'overview', component: ProductOverviewComponent },
+      { path: 'spec', component: ProductSpecComponent },
+    ],
   },
   {
     path: '',
@@ -75,6 +82,8 @@ const routes: Routes = [
     ProductProfileComponent,
     AddProductComponent,
     NotFoundComponent,
+    ProductOverviewComponent,
+    ProductSpecComponent,
   ],
   imports: [
     BrowserModule,
