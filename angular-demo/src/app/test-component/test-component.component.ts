@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IProduct } from '../models/product.interface';
-import { ProductService } from '../services/products.service';
+import { ProductService } from '../_products/services/products.service';
 
 @Component({
   selector: 'app-test-component',

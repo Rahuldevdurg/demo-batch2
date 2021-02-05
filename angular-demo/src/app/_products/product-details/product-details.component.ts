@@ -8,8 +8,7 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-
-import { IProduct } from '../models/product.interface';
+import { IProduct } from 'src/app/models/product.interface';
 import { ProductService } from '../services/products.service';
 
 @Component({
