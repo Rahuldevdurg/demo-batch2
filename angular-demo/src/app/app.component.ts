@@ -23,6 +23,22 @@ import { Component } from '@angular/core';
             >Products</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link  cursor-pointer"
+            [routerLink]="['/users']"
+            [routerLinkActive]="'active'"
+            >Users</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link  cursor-pointer"
+            [routerLink]="['/users/details']"
+            [routerLinkActive]="'active'"
+            >User Details</a
+          >
+        </li>
       </ul>
     </nav>
     <router-outlet></router-outlet>

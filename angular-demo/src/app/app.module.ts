@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { ProductsModule } from './_products/products.module';
 import { AppRoutingModule } from './app-routing.module';
+import { UsersModule } from './_users/users.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AppRoutingModule } from './app-routing.module';
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     // ProductsModule,
+    //UsersModule,
     AppRoutingModule,
   ],
   providers: [LowerCasePipe],
