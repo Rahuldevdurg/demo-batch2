@@ -32,7 +32,7 @@ import { AppRouterModule } from './app-router.module';
     BrowserModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
-    ProductModule,
+    //ProductModule,
     AppRouterModule,
   ],
   providers: [LowerCasePipe],

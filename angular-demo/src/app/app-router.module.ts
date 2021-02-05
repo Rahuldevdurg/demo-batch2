@@ -9,6 +9,11 @@ const routes: Routes = [
     component: WelcomeComponent,
   },
   {
+    path: 'products',
+    loadChildren: () =>
+      import('./_products/product.module').then((x) => x.ProductModule),
+  },
+  {
     path: '',
     redirectTo: 'welcome',
     pathMatch: 'full',
