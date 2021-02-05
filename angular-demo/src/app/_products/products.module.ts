@@ -2,9 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { CustomDatePipe } from '../pipes/custom-date.pipe';
-import { IfNullOrEmptyPipe } from '../pipes/if-null-or-empty.pipe';
-import { SearchProductPipe } from '../pipes/search-product.pipe';
+import { SharedModule } from '../shared.module';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -42,6 +40,7 @@ import { ProductService } from './services/products.service';
         ],
       },
     ]),
+    SharedModule,
   ],
   exports: [],
   declarations: [
@@ -51,9 +50,6 @@ import { ProductService } from './services/products.service';
     ProductProfileComponent,
     ProductOverviewComponent,
     ProductSpecComponent,
-    IfNullOrEmptyPipe,
-    SearchProductPipe,
-    CustomDatePipe,
   ],
   providers: [ProductProfileGuard, ProductResolver, ProductService],
 })
