@@ -12,25 +12,9 @@ import { TimerComponent } from './timer/timer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { RouterModule, Routes } from '@angular/router';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { ProductsModule } from './_products/products.module';
-
-const routes: Routes = [
-  {
-    path: 'welcome',
-    component: WelcomeComponent,
-  },
-  {
-    path: '',
-    redirectTo: 'welcome',
-    pathMatch: 'full',
-  },
-  {
-    path: '**',
-    component: NotFoundComponent,
-  },
-];
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -48,8 +32,8 @@ const routes: Routes = [
     BrowserModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
-    RouterModule.forRoot(routes),
     ProductsModule,
+    AppRoutingModule,
   ],
   providers: [LowerCasePipe],
   bootstrap: [AppComponent],
