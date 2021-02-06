@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './shared.module';
 import { WpHttpInterceptor } from './services/http-interceptor';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +32,8 @@ import { WpHttpInterceptor } from './services/http-interceptor';
     WelcomeComponent,
     NotFoundComponent,
     RegisterComponent,
+    NavBarComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
