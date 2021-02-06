@@ -10,6 +10,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductOverviewComponent } from './product-overview/product-overview.component';
 import { ProductProfileComponent } from './product-profile/product-profile.component';
 import { ProductSpecComponent } from './product-spec/product-spec.component';
+import { IsUserLoggedInGuard } from './services/isuser-loggedin.guard';
 import { ProductProfileGuard } from './services/product-profile.guard';
 import { ProductResolver } from './services/product-profile.resolver';
 import { ProductService } from './services/products.service';
@@ -24,11 +25,12 @@ import { ProductService } from './services/products.service';
       {
         path: '',
         component: ProductListComponent,
+        canActivate: [IsUserLoggedInGuard],
       },
       {
         path: ':id',
         component: ProductProfileComponent,
-        canActivate: [ProductProfileGuard], //true | Observable<true> | Promise<true>
+        canActivate: [ProductProfileGuard, IsUserLoggedInGuard], //true | Observable<true> | Promise<true>
         resolve: {
           productData: ProductResolver,
         },
