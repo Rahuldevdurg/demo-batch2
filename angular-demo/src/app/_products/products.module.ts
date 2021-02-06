@@ -15,8 +15,6 @@ import { ProductService } from './services/products.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     RouterModule.forChild([
       {
         path: 'new',

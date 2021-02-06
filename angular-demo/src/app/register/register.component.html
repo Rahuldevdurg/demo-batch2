@@ -1,1 +1,29 @@
-<p>register works!</p>
+<div class="container mt-3">
+  <h2>User Registration</h2>
+  <hr>
+
+  <form #registerForm="ngForm" (ngSubmit)="submitForm(registerForm.form)">
+    <div class="form-group">
+      <label for='fullName'>Full Name</label>
+      <input type="text" placeholder="Your name" class="form-control" required minlength="5" name="fullName"
+        [(ngModel)]='userData.fullName' #fullName='ngModel'>
+
+      <div class="alert alert-danger" *ngIf='fullName?.errors?.required && fullName?.touched' role="alert">
+        Fullname is required.
+      </div>
+      <div class="alert alert-danger" *ngIf='fullName?.errors?.minlength && fullName?.touched' role="alert">
+        Fullname must be of 5 characters long
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for='emailAddress'>Email</label>
+      <input type="text" placeholder="Your email" class="form-control" name="emailAddress"
+        [(ngModel)]="userData.emailAddress"><br>
+    </div>
+
+    <button type="submit" class="btn btn-success mr-2">Submit</button>
+    <button type="button" class="btn btn-danger" (click)="resetForm()">Reset Data</button> <br>
+  </form>
+</div>

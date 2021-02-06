@@ -15,6 +15,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
+import { SharedModule } from './shared.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     // ProductsModule,
