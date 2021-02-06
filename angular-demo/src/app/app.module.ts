@@ -9,13 +9,14 @@ import { ParentComponent } from './parent-component/parent.component';
 import { ChildComponent } from './child/child.component';
 import { AccordianComponent } from './shared/accordian/accordian.component';
 import { TimerComponent } from './timer/timer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './register/register.component';
 import { SharedModule } from './shared.module';
+import { WpHttpInterceptor } from './services/http-interceptor';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,14 @@ import { SharedModule } from './shared.module';
     //UsersModule,
     AppRoutingModule,
   ],
-  providers: [LowerCasePipe],
+  providers: [
+    LowerCasePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WpHttpInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
   exports: [],
 })
