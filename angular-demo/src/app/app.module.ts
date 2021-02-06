@@ -13,9 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
-import { ProductsModule } from './_products/products.module';
 import { AppRoutingModule } from './app-routing.module';
-import { UsersModule } from './_users/users.module';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +27,7 @@ import { UsersModule } from './_users/users.module';
     TimerComponent,
     WelcomeComponent,
     NotFoundComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

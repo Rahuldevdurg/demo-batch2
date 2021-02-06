@@ -39,6 +39,14 @@ import { Component } from '@angular/core';
             >User Details</a
           >
         </li>
+        <li class="nav-item">
+          <a
+            class="nav-link  cursor-pointer"
+            [routerLink]="['/register']"
+            [routerLinkActive]="'active'"
+            >Register</a
+          >
+        </li>
       </ul>
     </nav>
     <router-outlet></router-outlet>
