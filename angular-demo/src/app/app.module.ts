@@ -15,6 +15,10 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { NgHttpLoaderModule } from 'ng-http-loader';
 import { AppRoutingModule } from './app-routing.module';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from './shared.module';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -28,9 +32,12 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     WelcomeComponent,
     NotFoundComponent,
     NavBarComponent,
+    RegisterComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     HttpClientModule,
     NgHttpLoaderModule.forRoot(),
     // ProductsModule,

@@ -1,11 +1,19 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CustomDatePipe } from './pipes/custom-date.pipe';
 import { IfNullOrEmptyPipe } from './pipes/if-null-or-empty.pipe';
 import { SearchProductPipe } from './pipes/search-product.pipe';
 
 @NgModule({
-  imports: [],
-  exports: [IfNullOrEmptyPipe, SearchProductPipe, CustomDatePipe],
+  imports: [CommonModule, FormsModule],
+  exports: [
+    CommonModule,
+    FormsModule,
+    IfNullOrEmptyPipe,
+    SearchProductPipe,
+    CustomDatePipe,
+  ],
   declarations: [IfNullOrEmptyPipe, SearchProductPipe, CustomDatePipe],
   providers: [],
 })

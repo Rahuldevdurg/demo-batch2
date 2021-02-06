@@ -1,1 +1,49 @@
-<p>register works!</p>
+<div class="mt-3 container">
+  <h2>Register</h2>
+  <hr>
+  <form #form='ngForm' (ngSubmit)="submitForm(form)">
+    <div class="form-group">
+      <label for="fullName">Full Name</label>
+      <input type="text" class="form-control" id="fullName" placeholder="Enter Name" [(ngModel)]='fullName'
+        name="fullName">
+    </div>
+
+    <div class="form-group">
+      <label for="emailId">Email address</label>
+      <input type="text" class="form-control" id="emailId" name="emailAddress" [(ngModel)]="emailAddress"
+        placeholder="Enter email">
+    </div>
+
+    <div class="form-check form-group">
+      <input type="checkbox" class="form-check-input" id="optForSpecialOffer" name="optForSpecialOffer"
+        [(ngModel)]="optForSpecialOffer">
+      <label class="form-check-label" for="optForSpecialOffer">Email Special Offer</label>
+    </div>
+
+    <div class="form-check form-check-inline form-group">
+      <input class="form-check-input" type="radio" name="gender" value="male" id="gender_male" name="gender"
+        [(ngModel)]="gender">
+      <label class="form-check-label" for="gender_male">Male</label>
+    </div>
+    <div class="form-check form-check-inline form-group">
+      <input class="form-check-input" type="radio" name="gender" value="female" id="gender_female" name="gender"
+        [(ngModel)]="gender">
+      <label class="form-check-label" for="gender_female">Female</label>
+    </div>
+
+
+    <div class="form-group">
+      <label for="countryName">Country</label>
+      <select class="form-control" id="countryName" name="country" [(ngModel)]="country">
+        <option>Selecy Country</option>
+        <option value="india">INDIA</option>
+        <option value="srilanka">SRILANKA</option>
+        <option value="usa">USA</option>
+        <option value="canada">CANADA</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{{form.form.value | json}}

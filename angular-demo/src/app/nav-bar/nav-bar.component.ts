@@ -7,12 +7,12 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
-export class NavBarComponent implements OnInit, AfterViewChecked {
+export class NavBarComponent implements OnInit {
   loggedInUser: IUserToken;
   constructor(private authService: AuthService) {}
-  ngAfterViewChecked(): void {
-    this.loggedInUser = this.authService.getLoggedInUserData();
-  }
+  // ngAfterViewChecked(): void {
+  //   this.loggedInUser = this.authService.getLoggedInUserData();
+  // }
 
   ngOnInit(): void {
     console.log('Inside Nav Bar');
