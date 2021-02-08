@@ -71,6 +71,33 @@
       <label class="form-check-label" for="inlineRadio1">Phone</label>
     </div>
     <hr>
+    <div class="form-check">
+      <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" formControlName="contactMe">
+      <label for="blankCheckbox">&nbsp;Contact Me</label>
+    </div>
+
+
+    <!-- Address Starts here -->
+    <div *ngIf="customerForm.get('contactMe').value">
+      <div formArrayName="addressArray" *ngFor="let add of customerForm.get('addressArray')['controls']; let i= index">
+        <div formGroupName="{{i}}">
+          <div class="form-group">
+            <label for="">Address Line 1</label>
+            <input type="text" class="form-control" placeholder="Address" formControlName="address1">
+          </div>
+          <div class="form-group">
+            <label for="">CSZ</label>
+            <input type="text" class="form-control" placeholder="City, State, ZIP" formControlName="csz">
+          </div>
+        </div>
+      </div>
+      <hr>
+      <button type="button" class="btn btn-info mr-2" (click)="addNewAddress()">Add address</button>
+    </div>
+
+
+    <!-- Address Ends here -->
+    <hr>
     <button type="submit" class="btn btn-success mr-2">Submit</button>
     <button type="button" class="btn btn-secondary mr-2" (click)="loadData()">Load Data</button>
   </form>

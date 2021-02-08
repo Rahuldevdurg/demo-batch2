@@ -83,6 +83,8 @@ export class ReactiveFormComponent implements OnInit {
       rating: ['', [Validators.required, rangeValidator(1, 15)]],
       phoneNumber: [''],
       subscribeType: ['email'],
+      contactMe: [true],
+      addressArray: this.fb.array([this.createAddressGroup()]),
     });
 
     this.customerForm.get('subscribeType').valueChanges.subscribe((data) => {
@@ -92,6 +94,18 @@ export class ReactiveFormComponent implements OnInit {
 
     this.customerForm.get('phoneNumber').statusChanges.subscribe((data) => {
       console.log('Inside statusChanges -', data);
+    });
+  }
+
+  addNewAddress() {
+    this.customerForm
+      .get('addressArray')
+      ['controls']?.push(this.createAddressGroup());
+  }
+  createAddressGroup() {
+    return this.fb.group({
+      address1: [''],
+      csz: [''],
     });
   }
 
