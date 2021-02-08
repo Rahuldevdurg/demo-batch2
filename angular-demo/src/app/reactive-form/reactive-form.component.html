@@ -1,1 +1,38 @@
-<p>reactive-form works!</p>
+<div class="container mt-3">
+  <h2>User Registration</h2>
+  <hr>
+
+  <form [formGroup]="customerForm" (submit)="registerUser()">
+    <div class="form-group">
+      <label for='fullName'>Full Name</label>
+      <input type="text" placeholder="Your name" formControlName="fullName" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="customerForm.get('fullName')?.errors?.required  && customerForm.get('fullName').touched" role="alert">
+        Fullname is required.
+      </div>
+    </div>
+    <div class="form-group">
+      <label for='emailAddress'>Email</label>
+      <input type="text" placeholder="Your email" formControlName="emailAddress" class="form-control">
+      <div class="alert alert-danger"
+        *ngIf="customerForm.get('emailAddress')?.errors?.required  && customerForm.get('emailAddress').touched"
+        role="alert">
+        Email address is required.
+      </div>
+      <div class="alert alert-danger"
+        *ngIf="customerForm.get('emailAddress')?.errors?.email && customerForm.get('emailAddress').touched"
+        role="alert">
+        Invalid email address
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-success mr-2">Submit</button>
+    <button type="button" class="btn btn-secondary mr-2">Load Data</button>
+  </form>
+</div>
+<hr>
+<h6 class="text-info">pristine - {{customerForm.pristine}}</h6>
+<h6 class="text-info">valid - {{customerForm.valid}}</h6>
+<h6 class="text-info">touched - {{customerForm.touched}}</h6>
+<hr>
+<h6 class="text-info">{{customerForm.value | json}}</h6>
