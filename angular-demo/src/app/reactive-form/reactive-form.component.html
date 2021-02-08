@@ -28,6 +28,11 @@
     <div class="form-group">
       <label for='rating'>Rating</label>
       <input type="text" placeholder="Your Rating" class="form-control" formControlName="rating">
+      <div class="text-danger"
+        *ngIf="customerForm.get('rating')?.errors?.required && customerForm.get('rating').touched" role="alert">
+        Rating is required
+      </div>
+
       <div class="text-danger" *ngIf="customerForm.get('rating')?.errors?.range && customerForm.get('rating').touched"
         role="alert">
         Rating should be in between 1 and 5

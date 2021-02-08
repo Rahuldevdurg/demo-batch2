@@ -13,6 +13,8 @@ function customMaxValidator(
 ): {
   [key: string]: boolean;
 } | null {
+  if (control === null || control.value === '') return null;
+
   if (
     control != null &&
     (isNaN(control.value) || control.value > 5 || control.value < 1)
@@ -39,7 +41,7 @@ export class ReactiveFormComponent implements OnInit {
     this.customerForm = this.fb.group({
       fullName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
-      rating: ['', customMaxValidator],
+      rating: ['', [Validators.required, customMaxValidator]],
     });
   }
 
