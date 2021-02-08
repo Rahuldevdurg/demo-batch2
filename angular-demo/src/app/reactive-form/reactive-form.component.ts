@@ -94,6 +94,7 @@ export class ReactiveFormComponent implements OnInit {
 
     this.customerForm.get('phoneNumber').statusChanges.subscribe((data) => {
       console.log('Inside statusChanges -', data);
+      console.log('Inside statusChanges 2 -', data);
     });
   }
 
