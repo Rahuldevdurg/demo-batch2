@@ -1,10 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import {
+  AbstractControl,
   FormBuilder,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
+
+function customMaxValidator(
+  control: AbstractControl
+): {
+  [key: string]: boolean;
+} | null {
+  if (
+    control != null &&
+    (isNaN(control.value) || control.value > 5 || control.value < 1)
+  ) {
+    return { range: true };
+  }
+  return null;
+}
 
 @Component({
   templateUrl: './reactive-form.component.html',
@@ -23,6 +39,7 @@ export class ReactiveFormComponent implements OnInit {
     this.customerForm = this.fb.group({
       fullName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
+      rating: ['', customMaxValidator],
     });
   }
 

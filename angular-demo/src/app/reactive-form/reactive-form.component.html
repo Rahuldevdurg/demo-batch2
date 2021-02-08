@@ -25,6 +25,15 @@
         Invalid email address
       </div>
     </div>
+    <div class="form-group">
+      <label for='rating'>Rating</label>
+      <input type="text" placeholder="Your Rating" class="form-control" formControlName="rating">
+      <div class="text-danger" *ngIf="customerForm.get('rating')?.errors?.range && customerForm.get('rating').touched"
+        role="alert">
+        Rating should be in between 1 and 5
+      </div>
+    </div>
+    <hr>
     <button type="submit" class="btn btn-success mr-2">Submit</button>
     <button type="button" class="btn btn-secondary mr-2" (click)="loadData()">Load Data</button>
   </form>
