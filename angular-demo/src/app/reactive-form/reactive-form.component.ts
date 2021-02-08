@@ -64,6 +64,15 @@ export class ReactiveFormComponent implements OnInit {
       phoneNumber: [''],
       subscribeType: ['email'],
     });
+
+    this.customerForm.get('subscribeType').valueChanges.subscribe((data) => {
+      console.log('Inside Value Change -', data);
+      this.updateNotification(data);
+    });
+
+    this.customerForm.get('phoneNumber').statusChanges.subscribe((data) => {
+      console.log('Inside statusChanges -', data);
+    });
   }
 
   registerUser() {
