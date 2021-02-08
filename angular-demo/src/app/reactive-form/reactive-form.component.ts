@@ -43,6 +43,20 @@ function rangeValidator(min: number, max: number): ValidatorFn {
   };
 }
 
+function matchValidator(
+  group: AbstractControl
+): {
+  [key: string]: boolean;
+} | null {
+  let email = group.get('emailAddress');
+  let confirmEmail = group.get('confirmEmailAddress');
+  console.log(email, confirmEmail);
+  if (email.value !== confirmEmail.value) {
+    return { match: true };
+  }
+  return null;
+}
+
 @Component({
   templateUrl: './reactive-form.component.html',
   styleUrls: ['./reactive-form.component.css'],
@@ -59,7 +73,13 @@ export class ReactiveFormComponent implements OnInit {
 
     this.customerForm = this.fb.group({
       fullName: ['', Validators.required],
-      emailAddress: ['', [Validators.required, Validators.email]],
+      emailGroup: this.fb.group(
+        {
+          emailAddress: ['', [Validators.required, Validators.email]],
+          confirmEmailAddress: [''],
+        },
+        { validators: matchValidator }
+      ),
       rating: ['', [Validators.required, rangeValidator(1, 15)]],
       phoneNumber: [''],
       subscribeType: ['email'],
