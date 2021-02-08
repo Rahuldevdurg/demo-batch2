@@ -61,11 +61,23 @@ export class ReactiveFormComponent implements OnInit {
       fullName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
       rating: ['', [Validators.required, rangeValidator(1, 15)]],
+      phoneNumber: [''],
+      subscribeType: ['email'],
     });
   }
 
   registerUser() {
     console.log('Submitting Form ', this.customerForm);
+  }
+
+  updateNotification(notificationType: string) {
+    let control = this.customerForm.get('phoneNumber');
+    if (notificationType === 'phone') {
+      control.setValidators(Validators.required);
+    } else {
+      control.clearValidators();
+    }
+    control.updateValueAndValidity();
   }
 
   loadData() {
