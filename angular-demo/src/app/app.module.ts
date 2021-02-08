@@ -19,6 +19,7 @@ import { SharedModule } from './shared.module';
 import { WpHttpInterceptor } from './services/http-interceptor';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { LoginComponent } from './login/login.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     NavBarComponent,
     LoginComponent,
+    ReactiveFormComponent,
   ],
   imports: [
     BrowserModule,
