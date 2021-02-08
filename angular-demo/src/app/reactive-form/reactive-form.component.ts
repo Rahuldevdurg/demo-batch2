@@ -21,12 +21,23 @@ export class ReactiveFormComponent implements OnInit {
     // });
 
     this.customerForm = this.fb.group({
-      fullName: ['Swagat', Validators.required],
+      fullName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
     });
   }
 
   registerUser() {
     console.log('Submitting Form ', this.customerForm);
+  }
+
+  loadData() {
+    // this.customerForm.setValue({
+    //   fullName: 'Test Name',
+    //   emailAddress: 'email@gmail.com',
+    // });
+
+    this.customerForm.patchValue({
+      fullName: 'Test Name',
+    });
   }
 }
